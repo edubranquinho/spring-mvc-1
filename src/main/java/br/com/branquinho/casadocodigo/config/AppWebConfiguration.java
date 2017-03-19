@@ -7,9 +7,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import br.com.branquinho.casadocodigo.HomeController;
+import br.com.branquinho.casadocodigo.daos.ProdutoDAO;
 
 @EnableWebMvc
-@ComponentScan(basePackageClasses = { HomeController.class })
+@ComponentScan(basePackageClasses = { HomeController.class, ProdutoDAO.class })
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean
