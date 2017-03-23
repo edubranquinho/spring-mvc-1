@@ -11,12 +11,13 @@ import br.com.branquinho.casadocodigo.model.Produto;
 import br.com.branquinho.casadocodigo.model.TipoPreco;
 
 @Controller
+@RequestMapping("produtos")
 public class ProdutosController {
 
 	@Autowired
 	private ProdutoDAO produtoDAO;
 
-	@RequestMapping("produtos/form")
+	@RequestMapping("/form")
 	public ModelAndView form() {
 		ModelAndView mv = new ModelAndView("produtos/form");
 		TipoPreco[] tipoPrecos = TipoPreco.values();
@@ -24,11 +25,18 @@ public class ProdutosController {
 		return mv;
 	}
 
-	@RequestMapping(value = "produtos", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public String gravar(Produto produto) {
 		System.out.println(produto);
 		produtoDAO.gravar(produto);
 		return "produtos/ok";
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView listar() {
+		ModelAndView mv = new ModelAndView("produtos/lista");
+		mv.addObject("produtos", produtoDAO.listar());
+		return mv;
 	}
 
 }
