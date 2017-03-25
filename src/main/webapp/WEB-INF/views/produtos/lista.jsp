@@ -12,7 +12,7 @@
 	<div>
 		<p>${mensagem}</p>
 	</div>
-
+	
 	<table>
 		<tr>
 			<td>Título</td>
